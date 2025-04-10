@@ -1,17 +1,23 @@
 {
   "name": "webchat",
   "version": "1.0.0",
-  "description": "\\",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitaliymv/WebChatJs.git"
+  },
+  "engines": {
+    "node": "14.x"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "cookie": "^1.0.2",
-    "socket.io": "^4.8.1",
-    "sqlite": "^5.1.1",
-    "sqlite3": "^5.1.7"
-  }
+  "bugs": {
+    "url": "https://github.com/vitaliymv/WebChatJs/issues"
+  },
+  "homepage": "https://github.com/vitaliymv/WebChatJs#readme",
+  "description": ""
 }
