@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboChat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>RoboChat</h1>
+            <div>
+                <button id="toggle-theme">🌙</button>
+                <button class="exit">Sign out</button>
+            </div>
+        </header>
+        <ul id="messages">
+            <li class="left">
+                <div class="avatar">U</div>
+                <div class="message">
+                    <span class="sender">User</span>
+                    <span class="text">Hello</span>
+                    <span class="time">18:43</span>
+                </div>
+            </li>
+            <li class="right">
+                <span class="text">Hi</span>
+                <span class="time">18:44</span>
+            </li>
+        </ul>
+        <form id="form">
+            <textarea name="msg" id="msg" placeholder="Enter message..." rows="1"></textarea>
+            <button type="submit" class="submit">
+                <svg class="" viewBox="0 0 24 24" width="24px" height="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: inline-block; vertical-align: middle;"><path fill="currentColor" d="M3.67148 20.3995L21.1215 12.9195C21.9315 12.5695 21.9315 11.4295 21.1215 11.0795L3.67148 3.59953C3.01148 3.30953 2.28148 3.79953 2.28148 4.50953L2.27148 9.11953C2.27148 9.61953 2.64148 10.0495 3.14148 10.1095L17.2715 11.9995L3.14148 13.8795C2.64148 13.9495 2.27148 14.3795 2.27148 14.8795L2.28148 19.4895C2.28148 20.1995 3.01148 20.6895 3.67148 20.3995Z"></path></svg>
+            </button>
+        </form>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
