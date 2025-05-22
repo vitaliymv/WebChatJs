@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RoboChat</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.11/alertify.default.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.11/alertify.core.css">
 </head>
 <body>
     <main>
@@ -15,20 +17,7 @@
                 <button class="exit">Sign out</button>
             </div>
         </header>
-        <ul id="messages">
-            <li class="left">
-                <div class="avatar">U</div>
-                <div class="message">
-                    <span class="sender">User</span>
-                    <span class="text">Hello</span>
-                    <span class="time">18:43</span>
-                </div>
-            </li>
-            <li class="right">
-                <span class="text">Hi</span>
-                <span class="time">18:44</span>
-            </li>
-        </ul>
+        <ul id="messages"></ul>
         <form id="form">
             <textarea name="msg" id="msg" placeholder="Enter message..." rows="1"></textarea>
             <button type="submit" class="submit">
@@ -36,7 +25,9 @@
             </button>
         </form>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.11/alertify.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
+

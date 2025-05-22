@@ -3,23 +3,36 @@ const socket = io({
         cookie: document.cookie
     }
 });
-
+const textarea = document.querySelector("#msg");
 let c = document.cookie;
 let token = c.split("=")[1];
 let userId = token.split(".")[0];
 let username = token.split(".")[1];
-alert(`Welcome, ${username}`)
+alertify.log(`Welcome, ${username}`);
+let theme = localStorage.getItem("theme");
 const toggleThemeBtn = document.querySelector("#toggle-theme");
+if (theme == "dark") {
+    document.body.classList.add("dark");
+    toggleThemeBtn.textContent = document.body.classList.contains("dark") ? '☀️' : '🌙';
+}
+
 toggleThemeBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
+    let isDark = document.body.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "");
     toggleThemeBtn.textContent = document.body.classList.contains("dark") ? '☀️' : '🌙';
 })
 
 let form = document.querySelector("#form");
 form.addEventListener("submit", event => {
     event.preventDefault();
-    socket.emit("new_message", event.target["msg"].value);
-    event.target["msg"].value = ""
+    if (event.target["msg"].value.trim() == "") {
+        event.target["msg"].value = "";
+        textarea.style.height = "initial";
+        return
+    }
+    socket.emit("new_message", event.target["msg"].value.trim());
+    event.target["msg"].value = "";
+    textarea.style.height = "initial";
 })
 let messagesDOM = document.querySelector("#messages");
 socket.on("message", msg => {
@@ -43,7 +56,8 @@ socket.on("message", msg => {
                 <span class="time">${obj.time}</span>
             </div>
         </li>
-    `
+    `;
+    messagesDOM.scrollTo(0, messagesDOM.scrollHeight);
 })
 
 socket.on("all_messages", msgArray => {
@@ -67,10 +81,23 @@ socket.on("all_messages", msgArray => {
                 </div>
             </li>
         `
-    })
+    });
+    messagesDOM.scrollTo(0, messagesDOM.scrollHeight);
 })
 
 document.querySelector(".exit").addEventListener("click", () => {
     document.cookie = 'token=; Max-Age=0';
     location.assign("/auth");
+})
+
+textarea.addEventListener("keydown", e => {
+    if (e.key == "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        form.dispatchEvent(new Event("submit"));
+    }
+})
+
+textarea.addEventListener("input", () => {
+    textarea.style.height = "auto";
+    textarea.style.height = textarea.scrollHeight + "px";
 })
